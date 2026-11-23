@@ -1,14 +1,16 @@
 package com.unpri.charactermanager.model;
 
+import java.util.Objects;
+
 public class Character {
     
     private int id;
-    private final String name;
-    private final CharacterType type;
+    private final String name;       // Diberi final sesuai saran warning IDE
+    private final CharacterType type; // Diberi final sesuai saran warning IDE
     private int level;
     private int hitPoints;
     private int attackPower;
-    private int mana; // Atribut private baru 
+    private int mana;
 
     // Constructor 1
     public Character(String name, CharacterType type, int level)  {
@@ -46,7 +48,7 @@ public class Character {
     public int getLevel()  { return level; }
     public int getHitPoints()  { return hitPoints; }
     public int getAttackPower()  { return attackPower; }
-    public int getMana() { return mana; } // Getter mana baru
+    public int getMana() { return mana; }
 
     public void setId(int id) {
         this.id = id;
@@ -61,7 +63,6 @@ public class Character {
         this.attackPower = calculateBaseAttack();
     }
 
-    // Setter mana dengan validasi IllegalArgumentException jika negatif
     public void setMana(int mana) {
         if (mana < 0) {
             throw new IllegalArgumentException("Mana tidak boleh bernilai negatif!");
@@ -69,7 +70,6 @@ public class Character {
         this.mana = mana;
     }
 
-    // Method baru isAlive()
     public boolean isAlive() {
         return this.hitPoints > 0;
     }
@@ -82,6 +82,21 @@ public class Character {
                ", level=" + level +
                ", hp=" + hitPoints +
                ", atk=" + attackPower +
-               ", mana=" + mana + '}'; // tambahkan informasi mana
+               ", mana=" + mana + '}';
+    }
+
+    // ===== equals(): membandingkan kesamaan data berdasarkan name =====
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;                    
+        if (!(obj instanceof Character)) return false;    
+        Character other = (Character) obj;                
+        return Objects.equals(this.name, other.name);       
+    }
+
+    // ===== hashCode(): Wajib ada jika meng-override equals() =====
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }

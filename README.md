@@ -1,47 +1,15 @@
- # Character Manager - TP5 (Java Visual SIH-6406)
+## TP8 - Implementasi GUI Swing dan MVC
 
-Character Manager merupakan aplikasi berbasis konsol yang dibuat menggunakan bahasa pemrograman Java untuk mengelola data karakter dalam sebuah game, seperti Warrior, Mage, Archer, dan Healer. Proyek ini menerapkan beberapa konsep Object-Oriented Programming (OOP), meliputi enkapsulasi, penggunaan enum, konstruktor dengan parameter berbeda, serta validasi data untuk menjaga konsistensi informasi karakter.
+### 1. Screenshot Tampilan Utama
+1.Screenshot 2026-10-24 170020.png
+2.Screenshot 2026-10-24 174343.png
 
-# Bagian C — Alasan Penambahan Fitur Mandiri (findStrongest)
+### 2. Aliran Data (MVC)
+Aliran data diawali dari `Main.java` yang menginisialisasi data karakter dan menyimpannya di kelas `CharacterManager` (Model). Kelas `CharacterManager` melakukan pengolahan data serta perhitungan statistik seperti rata-rata level melalui method `getAverageLevel()`. Selanjutnya, `Main` mengambil data karakter dan hasil perhitungan tersebut, lalu meneruskannya ke kelas `MainWindow` (View) saat pembuatan objek untuk ditampilkan di GUI secara dinamis.
 
-Pada class CharacterManager, ditambahkan sebuah method mandiri bernama findStrongest(). Method ini berfungsi untuk memeriksa seluruh objek karakter yang tersimpan di dalam ArrayList<Character>, kemudian menentukan dan mengembalikan karakter dengan nilai attackPower paling tinggi.
+### 3. Daftar Karakter Baru
+* **Mercy (Type: HEALER, Level: 6):** Ditambahkan untuk melengkapi keberagaman peran (*class*) dalam tim dengan tipe pendukung (*support*). Level 6 dipilih agar memiliki HP dasar yang cukup bertahan.
+* **Guts (Type: WARRIOR, Level: 8):** Ditambahkan sebagai petarung garis depan berkekuatan tinggi. Level 8 memberikan statistik Attack Power dasar yang dominan dibandingkan karakter lainnya.
 
-Alasan dan Penerapan Konsep OOP
-
-1. Fungsi Analisis Karakter
-
-Fitur findStrongest() berguna untuk mengetahui karakter yang memiliki kekuatan serangan tertinggi. Informasi tersebut dapat dimanfaatkan untuk menampilkan statistik karakter, menentukan peringkat kekuatan, maupun mendukung pengembangan fitur pertarungan dalam game.
-
-2. Penanganan Kondisi Daftar Kosong
-
-Method ini juga memperhatikan kondisi ketika belum ada karakter yang tersimpan. Apabila characterList kosong, method akan mengembalikan null. Dengan demikian, program tidak mencoba mengambil elemen pertama dari daftar kosong yang dapat menyebabkan IndexOutOfBoundsException.
-
-3. Enkapsulasi dan Penggunaan Reference
-
-Dalam penerapannya, atribut characterList menggunakan modifier private, sehingga daftar karakter internal hanya dapat diakses secara langsung dari dalam class CharacterManager. Pengelolaan data dilakukan melalui method yang telah disediakan.
-
-Method findStrongest() mengembalikan reference menuju objek Character dengan nilai attackPower tertinggi, atau null apabila daftar tidak memiliki karakter. Oleh karena itu, meskipun daftar internal tetap terlindungi, objek yang dikembalikan masih dapat dimodifikasi melalui reference tersebut. Hal ini menunjukkan bahwa perlindungan terhadap struktur daftar tidak selalu berarti objek di dalamnya tidak dapat diubah.
-
-## Screenshot Hasil Program
-
-![Screenshot Output](Screenshot 2026-10-17 035721.png)
-
-## Struktur Folder Proyek
-
-AP6_Tugas/
-├── Screenshot 2026-10-17 035721.png
-├── README.md
-└── src/
-    ├── Main.java
-    └── com/
-        └── unpri/
-            └── charactermanager/
-                └── model/
-                    ├── Character.java
-                    ├── CharacterManager.java
-                    └── CharacterType.java
-
-Nama : Johannes Noel Simbolon
-Nim : 253303621218
-Kelas : Semester 3 Pagi A
-Link Google Docs :https://docs.google.com/document/d/1TD1rJMfyqa7vdwLatRFIV9yvvKBhQBPaSOEXand6GhY/edit?usp=sharing
+### 4. Link Dokumen Analisis (Google Docs)
+https://docs.google.com/document/d/1syxcy1OQiJscazuqWfPLM-i-lcLtojSy9JkoJzlrMng/edit?usp=sharing
