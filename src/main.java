@@ -3,7 +3,7 @@ import com.unpri.charactermanager.model.CharacterManager;
 import com.unpri.charactermanager.model.CharacterType;
 import java.util.ArrayList; 
 
-public class Main {
+public class main {
     public static void main(String[] args) {
 
         System.out.println("=== Character Manager v0.2 — CRUD Test ===\n");
