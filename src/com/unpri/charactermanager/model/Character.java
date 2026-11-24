@@ -1,87 +1,38 @@
 package com.unpri.charactermanager.model;
 
 public class Character {
-    
-    private int id;
-    private final String name;
-    private final CharacterType type;
+    private String name;
+    private CharacterType type;
     private int level;
     private int hitPoints;
     private int attackPower;
-    private int mana; // Atribut private baru 
 
-    // Constructor 1
-    public Character(String name, CharacterType type, int level)  {
+    public Character(String name, CharacterType type, int level) {
         this.name = name;
         this.type = type;
         this.level = level;
-        this.hitPoints = calculateBaseHP();
-        this.attackPower = calculateBaseAttack();
-        this.mana = 50; // Nilai default mana awal 
+        // Kalkulasi status berdasarkan level
+        this.hitPoints = level * 50;
+        this.attackPower = level * 15;
     }
 
-    // Constructor 2
-    public Character(int id, String name, CharacterType type, int level, int hitPoints, int attackPower, int mana)  {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.level = level;
-        this.hitPoints = hitPoints;
-        this.attackPower = attackPower;
-        this.mana = mana;
+    public String getName() {
+        return name;
     }
 
-    private int calculateBaseHP()  {
-        return 100 + (level * 10);
+    public CharacterType getType() {
+        return type;
     }
 
-    private int calculateBaseAttack()  {
-        return 10 + (level * 5);
+    public int getLevel() {
+        return level;
     }
 
-    // Getter dan Setter
-    public int getId()  { return id; }
-    public String getName()  { return name; }
-    public CharacterType getType()  { return type; }
-    public int getLevel()  { return level; }
-    public int getHitPoints()  { return hitPoints; }
-    public int getAttackPower()  { return attackPower; }
-    public int getMana() { return mana; } // Getter mana baru
-
-    public void setId(int id) {
-        this.id = id;
+    public int getHitPoints() {
+        return hitPoints;
     }
 
-    public void setLevel(int level) {
-        if (level < 1) {
-            throw new IllegalArgumentException("Level minimal adalah 1");
-        }
-        this.level = level;
-        this.hitPoints = calculateBaseHP();
-        this.attackPower = calculateBaseAttack();
-    }
-
-    // Setter mana dengan validasi IllegalArgumentException jika negatif
-    public void setMana(int mana) {
-        if (mana < 0) {
-            throw new IllegalArgumentException("Mana tidak boleh bernilai negatif!");
-        }
-        this.mana = mana;
-    }
-
-    // Method baru isAlive()
-    public boolean isAlive() {
-        return this.hitPoints > 0;
-    }
-
-    @Override 
-    public String toString() {
-        return "Character{id=" + id +
-               ", name='" + name + '\'' +
-               ", type=" + type +
-               ", level=" + level +
-               ", hp=" + hitPoints +
-               ", atk=" + attackPower +
-               ", mana=" + mana + '}'; // tambahkan informasi mana
+    public int getAttackPower() {
+        return attackPower;
     }
 }
